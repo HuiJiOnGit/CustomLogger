@@ -23,12 +23,12 @@ services.AddLogging(builder =>
     builder.AddSimpleRollingLog(option =>
     {
         option.AbsoluteLogDirectory = Directory.GetCurrentDirectory();
-        option.UseUtcTimestamp= true;
-        option.Prefix = "log-";
-        option.TimestampFormat = "s";
-        option.Suffix = ".log";
-        option.LogLogLevel = false;
-        option.RollingInterval = RollingInterval.Day;
+        //option.UseUtcTimestamp= true;
+        //option.Prefix = "log-";
+        //option.TimestampFormat = "s";
+        //option.Suffix = ".log";
+        //option.LogLogLevel = false;
+        //option.RollingInterval = RollingInterval.Day;
     });
 });
 
@@ -47,6 +47,7 @@ catch (NotImplementedException ex)
 {
     logger.LogWarning(3, ex, "[{time:yyyy/MM/dd HH:mm:ss}] Warning", now);
     logger.LogError(4, ex, "[{time:yyyy/MM/dd HH:mm:ss}] Error", now);
+    //logger.LogError("Error {msg}", ex.Message); 只要把Exception传入, 酒后有完整的异常信息和堆栈显示,不需要手动写入
     logger.LogCritical(5, ex, "[{time:yyyy/MM/dd HH:mm:ss}] Critical", now);
 }
 Console.ReadKey();
